@@ -13,8 +13,9 @@
         unless user
           li: a(href='/login') Log In
           li: a(href='/register') Register User
-          li: a(href='#') Anonymous
         else
+          li: a(href='/addresses') Addresses
+          li: a(href='/addresses/new') Add Address
           li
             form.navbar-form(method='post', action='/logout')
               input(type='hidden', name='_method', value='delete')

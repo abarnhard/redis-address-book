@@ -8,6 +8,7 @@ var morgan         = require('morgan'),
     RedisStore     = require('connect-redis')(session),
     security       = require('../lib/security'),
     users          = require('../controllers/users'),
+    addresses      = require('../controllers/addresses'),
     home           = require('../controllers/home');
 
 module.exports = function(app, express){
@@ -23,12 +24,18 @@ module.exports = function(app, express){
   app.use(security.authenticate);
 
   app.get('/', home.index);
-
   app.get('/register', users.new);
   app.post('/register', users.create);
   app.get('/login', users.login);
   app.post('/login', users.authenticate);
+
+  // bounce step, redirect to login if not authenticated
+  app.use(security.bounce);
+
   app.delete('/logout', users.logout);
+  app.get('/addresses/new', addresses.new);
+  app.post('/addresses', addresses.create);
+  app.get('/addresses', addresses.index);
 
   console.log('Express: Routes Loaded');
 };

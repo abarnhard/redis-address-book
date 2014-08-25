@@ -1,0 +1,27 @@
+extends ../shared/template
+block content
+  h2 Addresses
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-xs-5
+          form.form-horizontal(role='form', method='post', action='/addresses')
+            .form-group
+                label.col-sm-2.control-label(for='name') Name
+                .col-sm-10
+                  input#name.form-control(name='name', type='text', placeholder='Bob Boberson')
+            .form-group
+                label.col-sm-2.control-label(for='email') Email
+                .col-sm-10
+                  input#email.form-control(name='email', type='email', placeholder='Email')
+            .form-group
+              label.col-sm-2.control-label(for='color') Color
+              .col-sm-10
+                input#color.form-control(name='color', type='color')
+            .form-group
+              .col-sm-offset-2.col-sm-10
+                button.btn.btn-default(type='submit') Add Address
+        .col-xs-7
+
+block scripts
+

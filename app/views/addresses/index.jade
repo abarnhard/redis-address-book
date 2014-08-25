@@ -1,0 +1,22 @@
+extends ../shared/template
+block content
+  h2 Addresses
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-xs-12
+          table.table
+            thead
+              tr
+                th Name
+                th Email
+                th Color
+            tbody
+              each address in addresses
+                tr
+                  td= address.name
+                  td= address.email
+                  td(style='background-color:#{address.color};') &nbsp;
+
+block scripts
+
